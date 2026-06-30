@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nutricionista Luíza Arnold (CRN 13265). Especialista em Nutrição Comportamental, Clínica, Emagrecimento e Hipertrofia em Florianópolis e Online. Alcance seus objetivos sem terrorismo nutricional.">
+    <meta name="keywords" content="Nutricionista, Florianópolis, Lagoa da Conceição, Nutrição Comportamental, Emagrecimento, Hipertrofia, Dieta, Luiza Arnold">
+    <title>Nutricionista Luíza Arnold | Nutrição Comportamental e Clínica</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores Personalizadas (Paleta Elegante/Feminina) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta Terracota / Nude
+                        brand: {
+                            50: '#fbf5f3',  // Nude muito claro
+                            100: '#f6eae6', // Nude
+                            200: '#ebd1c9', 
+                            300: '#dfb3a9',
+                            400: '#d18d7f',
+                            500: '#c26955', // Terracota base (Botões e destaques)
+                            600: '#a75443',
+                            700: '#8c4436',
+                            800: '#75392e',
+                            900: '#613128',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'], // Fonte elegante para títulos
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Animação do botão do WhatsApp (ajustada para a nova cor) */
+        @keyframes pulse-brand {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(194, 105, 85, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(194, 105, 85, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(194, 105, 85, 0); }
+        }
+        .whatsapp-float {
+            animation: pulse-brand 2s infinite;
+        }
+
+        /* Menu Mobile */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        /* --- ANIMAÇÕES DE SCROLL (REVEAL) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* Delays para elementos em sequência */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-serif font-bold text-stone-900 tracking-tight">
+                        Luíza <span class="text-brand-500 italic">Arnold</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Início</a>
+                    <a href="#sobre" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Sobre Mim</a>
+                    <a href="#especialidades" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Especialidades</a>
+                    <a href="#imc" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Calculadora IMC</a>
+                    <a href="#depoimentos" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Depoimentos</a>
+                    <a href="#contato" class="text-stone-600 hover:text-brand-600 font-medium transition duration-300">Contato</a>
+                </nav>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:flex">
+                    <a href="https://wa.me/5551993333264" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition duration-300 shadow-md hover:shadow-lg">
+                        Agendar Consulta
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-stone-600 hover:text-brand-600 focus:outline-none p-2 transition">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white border-t border-stone-100">
+            <div class="px-4 pt-2 pb-6 space-y-1 shadow-xl">
+                <a href="#inicio" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Início</a>
+                <a href="#sobre" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Sobre Mim</a>
+                <a href="#especialidades" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Especialidades</a>
+                <a href="#imc" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Calculadora IMC</a>
+                <a href="#depoimentos" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Depoimentos</a>
+                <a href="#contato" class="block px-3 py-3 text-stone-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg font-medium transition">Contato</a>
+                <a href="https://wa.me/5551993333264" target="_blank" class="block mt-4 text-center bg-brand-500 hover:bg-brand-600 text-white px-4 py-3.5 rounded-xl font-medium transition shadow-md">Agendar Consulta</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative">
+        <!-- Elemento de Fundo Decorativo -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-100 opacity-50 blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-stone-200 opacity-40 blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="space-y-8 z-10 reveal-left">
+                    <div class="inline-flex items-center space-x-2 bg-white border border-brand-200 text-brand-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
+                        <i class="fas fa-leaf text-brand-500"></i>
+                        <span>CRN 13265</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif text-stone-900 leading-[1.15]">
+                        Resultados estéticos sem <span class="text-brand-500 italic">terrorismo</span> nutricional.
+                    </h1>
+                    <p class="text-lg text-stone-600 leading-relaxed max-w-lg">
+                        Acolhimento e estratégia para pacientes com obesidade, busca por hipertrofia ou emagrecimento. Atendimento presencial e online.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="https://wa.me/5551993333264" target="_blank" class="text-center bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-medium text-lg transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-xl"></i> Fale comigo agora
+                        </a>
+                    </div>
+                </div>
+                <div class="relative reveal-right">
+                    <!-- Blob shape em cor terrosa clara -->
+                    <div class="absolute inset-0 bg-brand-200 rounded-[3rem] transform rotate-3 scale-105 -z-10 transition-transform hover:rotate-6 duration-700"></div>
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFvp0W0d7rtYOoRpRRrL3pNUoaLdabA8ejgqsGbT6kXawQ4QhlKTivdSZiOfWjzOEIS0Q8LO8LfwJ163NEDxgp2t02I-wQcqefrYvULNPMkYCE1r6AqJJioP3CuXDzDdBy9zjCdHAvhj9U=w1900-h1200-k-no" 
+                         alt="Nutricionista Luíza Arnold no consultório" 
+                         class="relative rounded-3xl shadow-2xl object-cover w-full h-[500px] md:h-[650px] object-top border-4 border-white">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mim -->
+    <section id="sobre" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative reveal">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHPP3wOw-SkWkm9v1A7fG5uVbLqHEfjgDl_NVOR_NESiaCxGpY3yw-I0Lvgp51kpRF_mnnHC3ZAAV88oCzlrB4urThAj9oeYHcgH7Q8yfJCSOeMNMx812D1DPGdxRwYPq6OC8YEeoZc5at1=w1900-h1200-k-no" 
+                         alt="Luíza Arnold palestrando" 
+                         class="rounded-3xl shadow-xl w-full h-auto object-cover">
+                    <!-- Overlay Badge Elegante -->
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-brand-50 hidden md:flex flex-col items-center justify-center min-w-[160px]">
+                        <p class="font-serif font-bold text-4xl text-brand-500 mb-1">5.0</p>
+                        <div class="flex text-yellow-400 text-sm mb-2">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-xs text-stone-500 font-medium uppercase tracking-wider text-center">Nota máxima</p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 space-y-8 reveal delay-100">
+                    <div>
+                        <h2 class="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">Conheça sua Nutri</h2>
+                        <h3 class="text-4xl md:text-5xl font-serif text-stone-900 leading-tight">Luíza Parolin Arnold</h3>
+                    </div>
+                    <div class="prose prose-lg text-stone-600 leading-relaxed">
+                        <p>
+                            Oi pessoal! Sou a Luíza Arnold, natural do Rio Grande Do Sul e atualmente trabalho com duas modalidades: atendimento presencial (em Florianópolis - SC e Campo bom / Novo Hamburgo - RS) OU com a consultoria online, onde quer que você esteja no mundo.
+                        </p>
+                        <p>
+                            Acredito em uma nutrição sem terrorismo nutricional e com eficiência para que os meus pacientes atinjam seus objetivos estéticos. A redução de percentual de gordura corporal, diminuição de circunferências, aumento da massa muscular, menos flacidez e mais autoestima, fazem parte de toda uma abordagem que busco trazer para os meus pacientes.
+                        </p>
+                        <div class="p-6 bg-brand-50 rounded-2xl border-l-4 border-brand-400 my-8">
+                            <p class="font-serif italic text-stone-800 text-xl m-0">
+                                "Com comprometimento e adesão ao plano alimentar é possível atingir a sua meta e melhorar sua autoestima. Eu, como profissional, estou aqui para te conduzir nesse processo."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Especialidades -->
+    <section id="especialidades" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <h2 class="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">Como posso te ajudar</h2>
+                <h3 class="text-4xl font-serif text-stone-900">Minhas Especialidades</h3>
+                <div class="w-24 h-1 bg-brand-300 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(194,105,85,0.1)] transition-all duration-300 border border-transparent hover:border-brand-100 text-center reveal delay-100 group">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-8 text-2xl transform group-hover:rotate-6 transition-transform">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-stone-900 mb-4">Nutrição Comportamental e Clínica</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Entenda sua relação com a comida. Abordagem acolhedora focada em mudança de hábitos e tratamento de transtornos e obesidade.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(194,105,85,0.1)] transition-all duration-300 border border-transparent hover:border-brand-100 text-center reveal delay-200 group">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-8 text-2xl transform group-hover:scale-110 transition-transform">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-stone-900 mb-4">Emagrecimento Eficiente</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Redução do percentual de gordura e diminuição de medidas de forma saudável, sem dietas extremamente restritivas.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(194,105,85,0.1)] transition-all duration-300 border border-transparent hover:border-brand-100 text-center reveal delay-300 group">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-8 text-2xl transform group-hover:-rotate-6 transition-transform">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-stone-900 mb-4">Hipertrofia Muscular</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Estratégias nutricionais específicas para ganho de massa magra, redução da flacidez e otimização da performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax / Banner de Comida -->
+    <section class="relative py-32 bg-stone-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHqvnslbzGXILsZ4EyGWG-FuCTw1u6qNKR1mLNJIbcrJSPr5dOOjST0KmuNw-80kMgGayumYwu9Fs7sY8Yb45BntaHw8wdnkTL53Rnl2N40zZES3pGq4frpyVP19CE9ffyLy8VLCri3DYWj=w1900-h1200" 
+                 alt="Prato saudável" class="w-full h-full object-cover opacity-30">
+        </div>
+        <!-- Gradient Overlay para manter a legibilidade e aquecer a imagem -->
+        <div class="absolute inset-0 bg-gradient-to-r from-stone-900/90 to-brand-900/60"></div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 text-center text-white z-10 reveal">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight">Coma o que você gosta, nas quantidades certas.</h2>
+            <p class="text-lg md:text-xl text-stone-200 mb-10 font-light">Descubra como alinhar seus pratos favoritos às suas demandas e objetivos de forma inteligente.</p>
+            <a href="https://go.hotmart.com/H104947797I" target="_blank" class="inline-block bg-white text-brand-700 hover:bg-brand-50 px-10 py-4 rounded-full font-medium transition shadow-lg hover:shadow-xl">
+                Conheça o Programa: Emagreça & Mantenha <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção: Calculadora de IMC -->
+    <section id="imc" class="py-24 bg-white relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">Sua Saúde em Foco</h2>
+                <h3 class="text-3xl md:text-4xl font-serif text-stone-900 mb-4">Calculadora de IMC</h3>
+                <p class="text-stone-600">Um primeiro passo para entender sua composição corporal atual.</p>
+            </div>
+
+            <!-- Box da Calculadora -->
+            <div class="bg-stone-50 rounded-[2rem] p-8 md:p-12 shadow-sm border border-stone-100 reveal delay-100 relative overflow-hidden">
+                <!-- Detalhe decorativo -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-brand-100 rounded-bl-full opacity-50"></div>
+
+                <form id="imcForm" class="space-y-8 relative z-10 max-w-xl mx-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="peso" class="block text-sm font-medium text-stone-700 mb-2">Seu Peso (kg)</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-weight text-stone-400"></i>
+                                </div>
+                                <input type="number" id="peso" step="0.1" placeholder="Ex: 65.5" required class="w-full pl-12 px-4 py-4 rounded-xl border border-stone-200 bg-white focus:ring-2 focus:ring-brand-400 focus:border-brand-400 outline-none transition text-lg shadow-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="altura" class="block text-sm font-medium text-stone-700 mb-2">Sua Altura (m)</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i class="fas fa-ruler-vertical text-stone-400"></i>
+                                </div>
+                                <input type="number" id="altura" step="0.01" placeholder="Ex: 1.65" required class="w-full pl-12 px-4 py-4 rounded-xl border border-stone-200 bg-white focus:ring-2 focus:ring-brand-400 focus:border-brand-400 outline-none transition text-lg shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-medium py-4 px-6 rounded-xl transition shadow-md hover:shadow-lg text-lg">
+                        Calcular Meu Resultado
+                    </button>
+                </form>
+
+                <!-- Box de Resultado (Fica escondido até o cálculo) -->
+                <div id="imcResultBox" class="hidden mt-10 pt-10 border-t border-stone-200 relative z-10">
+                    <div class="text-center mb-8">
+                        <p class="text-sm text-stone-500 font-medium uppercase tracking-widest mb-2">Seu IMC é</p>
+                        <div class="flex items-end justify-center gap-2 mb-3">
+                            <span id="imcValue" class="text-6xl font-serif text-stone-900 leading-none">--</span>
+                        </div>
+                        <div id="imcStatusBadge" class="inline-block px-5 py-1.5 rounded-full text-sm font-semibold mt-2">--</div>
+                    </div>
+                    
+                    <p id="imcMessageText" class="text-stone-600 text-center mb-8 leading-relaxed max-w-lg mx-auto text-lg">--</p>
+                    
+                    <!-- Botão dinâmico para WhatsApp -->
+                    <a id="imcWhatsappLink" href="#" target="_blank" 
+                       class="flex items-center justify-center w-full max-w-lg mx-auto bg-brand-500 hover:bg-brand-600 text-white font-medium py-4 px-6 rounded-xl transition shadow-lg hover:shadow-xl text-lg gap-3">
+                       <i class="fab fa-whatsapp text-2xl"></i>
+                       <span id="imcBtnText">--</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos (Google Meu Negócio) -->
+    <section id="depoimentos" class="py-24 bg-brand-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-brand-500 uppercase tracking-[0.2em] mb-3">Histórias Reais</h2>
+                <h3 class="text-3xl md:text-4xl font-serif text-stone-900 mb-4">O que dizem os pacientes</h3>
+                <div class="flex items-center justify-center space-x-1 text-yellow-400 text-lg mb-2">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-stone-600">Baseado em <span class="font-bold">33 avaliações</span> no Google (Nota 5.0)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 relative reveal delay-100">
+                    <i class="fas fa-quote-left text-4xl text-brand-100 absolute top-8 left-8"></i>
+                    <p class="text-stone-600 leading-relaxed relative z-10 pt-10 mb-8 italic text-sm">
+                        "Gente, faz muita diferença ter acompanhamento físico e nutricional juntos. Depois de mais de três anos sentindo que meu corpo estava estagnado... a ajuda da Luíza fez toda a diferença pra eu finalmente começar a evoluir..."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center font-serif text-xl text-brand-600">D</div>
+                        <div>
+                            <p class="font-bold text-stone-900 text-sm">Daiane Thais Schneider</p>
+                            <p class="text-xs text-stone-500">Paciente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 relative reveal delay-200">
+                    <i class="fas fa-quote-left text-4xl text-brand-100 absolute top-8 left-8"></i>
+                    <p class="text-stone-600 leading-relaxed relative z-10 pt-10 mb-8 italic text-sm">
+                        "Excelente profissional! A Luiza é extremamente atenciosa, explica tudo com muita clareza e transmite muita segurança no atendimento. Dá pra ver o cuidado e o comprometimento em cada orientação. Recomendo muito!"
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center font-serif text-xl text-brand-600">Â</div>
+                        <div>
+                            <p class="font-bold text-stone-900 text-sm">Ângela Bauer Schünke</p>
+                            <p class="text-xs text-stone-500">Paciente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 relative reveal delay-300">
+                    <i class="fas fa-quote-left text-4xl text-brand-100 absolute top-8 left-8"></i>
+                    <p class="text-stone-600 leading-relaxed relative z-10 pt-10 mb-8 italic text-sm">
+                        "Profissional acolhedora, maravilhosa e muito diferenciada! Amei meu protocolo alimentar e estou amando o acompanhamento nutricional com a Lu, comendo tudo o que eu gosto e com as quantidades alinhadas..."
+                    </p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center font-serif text-xl text-brand-600">G</div>
+                        <div>
+                            <p class="font-bold text-stone-900 text-sm">Geovanna Campos</p>
+                            <p class="text-xs text-stone-500">Paciente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato & Localização -->
+    <section id="contato" class="py-24 bg-[#3d3735] text-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Infos -->
+                <div class="space-y-10 reveal-left">
+                    <div>
+                        <h2 class="text-sm font-bold text-brand-400 uppercase tracking-[0.2em] mb-3">Dê o primeiro passo</h2>
+                        <h3 class="text-4xl font-serif font-bold text-white mb-4">Vamos conversar?</h3>
+                        <p class="text-stone-300 text-lg">Agende sua consulta presencial ou online e comece sua jornada rumo aos seus objetivos com saúde.</p>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Local -->
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-stone-700/50 flex items-center justify-center text-brand-400 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-white">Locais de Atendimento</h4>
+                                <p class="text-stone-300 mt-2 leading-relaxed">Av. Afonso Delambert Neto, 26<br>Lagoa da Conceição, Florianópolis - SC, 88062-000</p>
+                                <p class="text-brand-300 text-sm mt-3"><i class="fas fa-globe-americas mr-1"></i> Também em Campo Bom / NH (RS) e Online.</p>
+                            </div>
+                        </div>
+
+                        <!-- Horários -->
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-stone-700/50 flex items-center justify-center text-brand-400 flex-shrink-0">
+                                <i class="fas fa-clock text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-white">Horário de Funcionamento</h4>
+                                <p class="text-stone-300 mt-2">
+                                    <span class="block">Segunda a Sábado: 07:00 às 21:00</span>
+                                    <span class="block text-sm text-stone-400 mt-1">Domingo: Fechado</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-2xl bg-stone-700/50 flex items-center justify-center text-brand-400 flex-shrink-0">
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-white">WhatsApp</h4>
+                                <a href="https://wa.me/5551993333264" class="text-stone-300 hover:text-brand-300 transition mt-2 block text-lg">(51) 99333-3264</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="rounded-3xl overflow-hidden shadow-2xl h-96 lg:h-[500px] border-4 border-stone-700/30 reveal-right">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3535.856230628399!2d-48.47508592383823!3d-27.601140976243886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95273f62f86172bd%3A0xcb1c409f1d4d1d0d!2sNutricionista%20Luiza%20Arnold!5e0!3m2!1spt-BR!2sbr!4v1717180000000!5m2!1spt-BR!2sbr" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#2c2826] text-stone-400 py-12 border-t border-stone-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <!-- Logo Footer -->
+                <div class="text-2xl font-serif font-bold text-white tracking-tight">
+                    Luíza <span class="text-brand-500 italic">Arnold</span>
+                </div>
+                
+                <!-- Links Úteis -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm">
+                    <a href="https://go.hotmart.com/H104947797I" target="_blank" class="hover:text-white transition">Programa Emagreça & Mantenha</a>
+                    <span class="hidden md:inline text-stone-600">•</span>
+                    <a href="https://chat.whatsapp.com/KEEt7lTmwIZGDZxga5Cyhm" target="_blank" class="hover:text-white transition">Grupo de Estudos (Profissionais)</a>
+                </div>
+
+                <!-- Redes Sociais -->
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/nutriluarnold_/" target="_blank" class="w-10 h-10 rounded-full bg-stone-800 hover:bg-brand-500 flex items-center justify-center text-white transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5551993333264" target="_blank" class="w-10 h-10 rounded-full bg-stone-800 hover:bg-brand-500 flex items-center justify-center text-white transition-colors" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center text-xs text-stone-500">
+                <p>&copy; <span id="currentYear">2026</span> Nutricionista Luíza Arnold. Todos os direitos reservados. CRN 13265.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp (Arredondado perfeito) -->
+    <a href="https://wa.me/5551993333264" target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-brand-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-brand-600 transition-colors whatsapp-float cursor-pointer"
+       aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Ano atual
+        document.getElementById('currentYear').textContent = "2026";
+
+        // Menu Mobile Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        // Fechar menu mobile ao clicar em link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
+        });
+
+        // Lógica da Calculadora de IMC (Apenas Form -> Resultado Dinâmico)
+        const form = document.getElementById('imcForm');
+        const resultBox = document.getElementById('imcResultBox');
+        const imcValue = document.getElementById('imcValue');
+        const imcStatusBadge = document.getElementById('imcStatusBadge');
+        const imcMessageText = document.getElementById('imcMessageText');
+        const imcWhatsappLink = document.getElementById('imcWhatsappLink');
+        const imcBtnText = document.getElementById('imcBtnText');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let pesoInput = document.getElementById('peso').value.replace(',', '.');
+            let alturaInput = document.getElementById('altura').value.replace(',', '.');
+            
+            let peso = parseFloat(pesoInput);
+            let altura = parseFloat(alturaInput);
+
+            if (peso > 0 && altura > 0) {
+                if(altura > 3) altura = altura / 100; // Correção se digitar 175 em vez de 1.75
+
+                let imc = (peso / (altura * altura)).toFixed(1);
+                imcValue.textContent = imc;
+                
+                let classificacao = '';
+                let corClasse = '';
+                let mensagem = '';
+                let textoBotao = '';
+                let msgWhatsapp = '';
+
+                // Lógica de Resultados Específicos
+                if (imc < 18.5) {
+                    classificacao = 'Abaixo do peso';
+                    corClasse = 'bg-stone-200 text-stone-700'; // Tons mais neutros/elegantes
+                    mensagem = 'Seu peso está abaixo do ideal. O ganho de massa magra de forma saudável pode ser um excelente objetivo para melhorar sua disposição e estética.';
+                    textoBotao = 'Quero ganhar massa com saúde';
+                    msgWhatsapp = 'Oi Luíza Arnold! Calculei meu IMC no site e deu "Abaixo do peso". Gostaria de agendar uma consulta para estruturar um ganho de peso saudável.';
+                } else if (imc >= 18.5 && imc <= 24.9) {
+                    classificacao = 'Peso Normal';
+                    corClasse = 'bg-brand-100 text-brand-700';
+                    mensagem = 'Parabéns, seu peso é considerado normal! Se o seu foco for hipertrofia, definição muscular ou manter a saúde com qualidade, um plano alinhado faz toda a diferença.';
+                    textoBotao = 'Quero otimizar meus resultados';
+                    msgWhatsapp = 'Oi Luíza Arnold! Meu IMC deu "Peso Normal". Gostaria de agendar uma consulta para conversar sobre hipertrofia e definição.';
+                } else if (imc >= 25 && imc <= 29.9) {
+                    classificacao = 'Sobrepeso';
+                    corClasse = 'bg-yellow-100 text-yellow-800';
+                    mensagem = 'O cálculo indica sobrepeso. Este é o momento ideal para iniciar uma redução de percentual de gordura de forma eficiente, sem extremismos ou restrições severas.';
+                    textoBotao = 'Quero emagrecer sem terrorismo';
+                    msgWhatsapp = 'Oi Luíza Arnold! Fiz o cálculo do IMC e deu "Sobrepeso". Estou buscando um emagrecimento saudável. Como funciona seu atendimento?';
+                } else {
+                    classificacao = 'Obesidade';
+                    corClasse = 'bg-red-100 text-red-800';
+                    mensagem = 'O resultado indica obesidade. Com acolhimento, nutrição comportamental e estratégia, podemos construir novos hábitos para você emagrecer de forma sustentável e recuperar sua autoestima.';
+                    textoBotao = 'Quero transformar minha rotina';
+                    msgWhatsapp = 'Oi Luíza Arnold! O meu IMC deu "Obesidade". Me identifiquei com sua abordagem sem terrorismo e gostaria de agendar uma consulta.';
+                }
+
+                imcStatusBadge.textContent = classificacao;
+                imcStatusBadge.className = `inline-block px-5 py-1.5 rounded-full text-sm font-semibold mt-2 ${corClasse}`;
+                
+                imcMessageText.textContent = mensagem;
+                imcBtnText.textContent = textoBotao;
+                imcWhatsappLink.href = `https://wa.me/5551993333264?text=${encodeURIComponent(msgWhatsapp)}`;
+                
+                // Mostra o resultado com fade in e scroll
+                resultBox.classList.remove('hidden');
+                resultBox.style.opacity = 0;
+                
+                setTimeout(() => {
+                    resultBox.style.transition = "opacity 0.6s ease";
+                    resultBox.style.opacity = 1;
+                    
+                    // Rola suavemente para baixo para garantir que o usuário veja a CTA
+                    const y = resultBox.getBoundingClientRect().top + window.scrollY - 100;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                }, 50);
+            }
+        });
+
+        // --- SISTEMA DE ANIMAÇÕES DE SCROLL (Intersection Observer) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Dispara quando 15% do elemento estiver visível
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Opcional: parar de observar após a animação acontecer uma vez
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            // Seleciona todos os elementos com as classes de reveal
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
